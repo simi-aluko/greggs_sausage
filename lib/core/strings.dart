@@ -1,0 +1,1 @@
+const strArticles = 'articles';

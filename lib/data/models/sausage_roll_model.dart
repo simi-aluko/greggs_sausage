@@ -1,4 +1,9 @@
-class SausageRollModel {
+import 'package:equatable/equatable.dart';
+import 'package:json_annotation/json_annotation.dart';
+part 'sausage_roll_model.g.dart';
+
+@JsonSerializable()
+class SausageRollModel extends Equatable {
   final String articleCode;
   final String shopCode;
   final String availableFrom;
@@ -12,7 +17,7 @@ class SausageRollModel {
   final String imageUri;
   final String thumbnailUri;
 
-  SausageRollModel(
+  const SausageRollModel(
       {required this.articleCode,
       required this.shopCode,
       required this.availableFrom,
@@ -26,4 +31,9 @@ class SausageRollModel {
       required this.imageUri,
       required this.thumbnailUri});
 
+  factory SausageRollModel.fromJson(Map<String, dynamic> json) => _$SausageRollModelFromJson(json);
+
+  @override
+  List<Object?> get props => [articleCode, shopCode, availableFrom, availableUntil, eatInPrice, eatOutPrice,
+    articleName, dayParts, internalDescription, customerDescription, imageUri, thumbnailUri];
 }

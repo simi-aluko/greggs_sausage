@@ -1,4 +1,6 @@
-class SausageRollEntity {
+import 'package:equatable/equatable.dart';
+
+class SausageRollEntity extends Equatable {
   final String articleName;
   final String availableFrom; // date format suitable for ui
   final String availableUntil; // date format suitable for ui
@@ -9,7 +11,7 @@ class SausageRollEntity {
   final String imageUri;
   final String thumbnailUri;
 
-  SausageRollEntity(
+  const SausageRollEntity(
       {required this.articleName,
       required this.availableFrom,
       required this.availableUntil,
@@ -19,6 +21,10 @@ class SausageRollEntity {
       required this.customerDescription,
       required this.imageUri,
       required this.thumbnailUri});
+
+  @override
+  List<Object?> get props => [articleName, availableFrom, availableUntil, eatInPrice, eatOutPrice, dayParts,
+    customerDescription, imageUri, thumbnailUri];
 }
 
 
