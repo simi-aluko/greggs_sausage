@@ -10,15 +10,14 @@ abstract class SausageRollDataSource {
 
 // read file and return list of sausage roll model
 class SausageRollDataSourceImpl extends SausageRollDataSource {
-  final File file;
+  final String jsonData;
 
-  SausageRollDataSourceImpl({required this.file});
+  SausageRollDataSourceImpl({required this.jsonData});
 
   @override
   Future<List<SausageRollModel>> getSausageRolls() {
-    String sausageRollJsonString = file.readAsStringSync();
 
-    List<SausageRollModel> sausageRollModels = json.decode(sausageRollJsonString)[strArticles]
+    List<SausageRollModel> sausageRollModels = json.decode(jsonData)[strArticles]
         .map<SausageRollModel>((article) => SausageRollModel.fromJson(article))
         .toList();
 

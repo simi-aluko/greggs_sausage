@@ -12,6 +12,7 @@ class SausageRollRepositoryImpl extends SausageRollRepository {
   @override
   Future<List<SausageRollEntity>> getSausageRolls() async {
     List<SausageRollModel> sausageRollModels = await dataSource.getSausageRolls();
+
     List<SausageRollEntity> sausageRollEntities = sausageRollModels.map<SausageRollEntity>((e) => SausageRollEntity(articleName: e
         .articleName, availableFrom: e.availableFrom, availableUntil: e.availableUntil, eatOutPrice: e.eatOutPrice,
         eatInPrice: e.eatInPrice, dayParts: e.dayParts, customerDescription: e.customerDescription, imageUri: e

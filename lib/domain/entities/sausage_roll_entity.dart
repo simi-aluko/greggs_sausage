@@ -10,8 +10,9 @@ class SausageRollEntity extends Equatable {
   final String customerDescription;
   final String imageUri;
   final String thumbnailUri;
+  bool isEatIn = false;
 
-  const SausageRollEntity(
+  SausageRollEntity(
       {required this.articleName,
       required this.availableFrom,
       required this.availableUntil,
@@ -20,11 +21,12 @@ class SausageRollEntity extends Equatable {
       required this.dayParts,
       required this.customerDescription,
       required this.imageUri,
-      required this.thumbnailUri});
+      required this.thumbnailUri,});
 
   @override
   List<Object?> get props => [articleName, availableFrom, availableUntil, eatInPrice, eatOutPrice, dayParts,
-    customerDescription, imageUri, thumbnailUri];
+    customerDescription, imageUri, thumbnailUri, isEatIn];
+
 }
 
 
