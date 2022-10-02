@@ -30,7 +30,7 @@ class _ScreenItemDetailState extends State<ScreenItemDetail> {
     return Scaffold(
         body: SafeArea(
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: dimenDefaultScreenPadding),
+        padding: EdgeInsets.all(dimenDefaultScreenPadding),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
