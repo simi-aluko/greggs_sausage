@@ -40,9 +40,9 @@ class _ScreenBasketState extends State<ScreenBasket> {
                     itemCount = state.sausageRollBasketEntity.basketItems.length;
                     basketItems = state.sausageRollBasketEntity.basketItems;
                   }
-                  if(basketItems.isEmpty){
+                  if (basketItems.isEmpty) {
                     return const WidgetMessageDisplay(message: strBasketIsEmpty);
-                  }else{
+                  } else {
                     return ListView.separated(
                         itemBuilder: (context, position) {
                           return Dismissible(
