@@ -2,8 +2,8 @@ import 'package:equatable/equatable.dart';
 
 class SausageRollEntity extends Equatable {
   final String articleName;
-  final String availableFrom; // date format suitable for ui
-  final String availableUntil; // date format suitable for ui
+  final String availableFrom;
+  final String availableUntil;
   final double eatOutPrice;
   final double eatInPrice;
   final List<String> dayParts;

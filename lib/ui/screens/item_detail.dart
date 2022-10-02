@@ -55,11 +55,11 @@ class _ScreenItemDetailState extends State<ScreenItemDetail> {
               ],
             )),
             const SizedBox(height: 30),
-            BlocBuilder<SausageRollBloc, SausageRollState>(
-                builder: (context, state){
-                  return buildDefaultBottomBtn(buildButtonText(), () { addItemToBasket(context);});
-                }
-            )
+            BlocBuilder<SausageRollBloc, SausageRollState>(builder: (context, state) {
+              return buildDefaultBottomBtn(buildButtonText(), () {
+                addItemToBasket(context);
+              });
+            })
           ],
         ),
       ),
@@ -114,9 +114,7 @@ class _ScreenItemDetailState extends State<ScreenItemDetail> {
             Expanded(child: buildItemDetailValueText(text: fromTimeString)),
           ],
         ),
-        const SizedBox(
-          height: 10,
-        ),
+        const SizedBox(height: 10),
         Row(
           children: [
             buildItemDetailKeyText(text: strUntil_),
@@ -163,14 +161,14 @@ class _ScreenItemDetailState extends State<ScreenItemDetail> {
         buildItemDetailTitle(title: widget.sausageRollEntity.articleName),
         const Spacer(),
         buildShoppingBag(),
-        const SizedBox(width: 5,),
+        const SizedBox(width: 5),
         BlocBuilder<SausageRollBloc, SausageRollState>(
           builder: (context, state) {
-            if(state is GetBasketLoadedState){
+            if (state is GetBasketLoadedState) {
               basketSize = state.sausageRollBasketEntity.basketItems.length;
             }
             return buildItemDetailTitle(title: basketSize.toString());
-            },
+          },
         )
       ],
     );

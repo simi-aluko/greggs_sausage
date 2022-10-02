@@ -1,3 +1,4 @@
+const strAppName = 'Greggs Sausage';
 const strArticles = 'articles';
 const strGreggs = 'Greggs';
 const strSausageRollJSONFilePath = 'assets/files/sausage_roll.json';
@@ -10,3 +11,4 @@ const strDescription = 'Description';
 const strBasket = 'Basket';
 const strSubTotal = 'Subtotal';
 const strViewBasket = 'View Basket';
+const strBasketIsEmpty = 'Oops, your basket is empty!';

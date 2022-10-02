@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:greggs_susage/core/dimens.dart';
 
-class MessageDisplay extends StatelessWidget {
+class WidgetMessageDisplay extends StatelessWidget {
   final String message;
 
-  const MessageDisplay({
+  const WidgetMessageDisplay({
     Key? key,
     required this.message,
   }) : super(key: key);
@@ -16,7 +17,7 @@ class MessageDisplay extends StatelessWidget {
         child: SingleChildScrollView(
           child: Text(
             message,
-            style: const TextStyle(fontSize: 25),
+            style: TextStyle(fontSize: dimenMText),
             textAlign: TextAlign.center,
           ),
         ),

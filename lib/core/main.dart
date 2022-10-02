@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greggs_susage/core/service_locator.dart';
+import 'package:greggs_susage/core/strings.dart';
 import 'package:greggs_susage/ui/screens/items_list.dart';
 
 import '../ui/bloc/sausage_roll_bloc.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
     return BlocProvider<SausageRollBloc>(
       create: (context) => sl<SausageRollBloc>()..add(GetBasketEvent())..add(GetSausageRollsEvent()),
       child: MaterialApp(
-        title: 'Greggs Sausage',
+        title: strAppName,
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),

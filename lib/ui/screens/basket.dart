@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:greggs_susage/core/dimens.dart';
 import 'package:greggs_susage/ui/widgets/basket_item.dart';
 import 'package:greggs_susage/ui/widgets/components.dart';
-
-import '../../core/colors.dart';
+import 'package:greggs_susage/ui/widgets/message_display.dart';
 import '../../core/strings.dart';
 import '../../domain/entities/sausage_roll_entity.dart';
 import '../bloc/sausage_roll_bloc.dart';
@@ -25,45 +24,50 @@ class _ScreenBasketState extends State<ScreenBasket> {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: dimenDefaultScreenPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildBackArrow(context),
-                const SizedBox(height: 20),
-                buildTitleRow(),
-                const SizedBox(height: 20),
-                Expanded(
-                  child: BlocBuilder<SausageRollBloc, SausageRollState>(
-                    builder: (context, state) {
-                      if (state is GetBasketLoadedState) {
-                        itemCount = state.sausageRollBasketEntity.basketItems.length;
-                        basketItems = state.sausageRollBasketEntity.basketItems;
-                      }
-                      return ListView.separated(
-                          itemBuilder: (context, position) {
-                            return Dismissible(
-                              key: ValueKey(basketItems[position]),
-                              child: WidgetBasketItem(sausageRollEntity: basketItems[position]),
-                              onDismissed: (DismissDirection direction){
-                                BlocProvider.of<SausageRollBloc>(context).add(RemoveSausageFromBasketEvent(sausageRollEntity: basketItems[position]));
-                              },
-                            );
-                            // return WidgetBasketItem(sausageRollEntity: basketItems[position]);
-                          },
-                          separatorBuilder: (context, index) => buildSeparatorBuilder(),
-                          itemCount: itemCount);
-                    },
-                  ),
-                ),
-                const SizedBox(height: 30),
-                buildSeparatorBuilder(),
-                buildSubTotalRow()
-              ],
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: dimenDefaultScreenPadding),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            buildBackArrow(context),
+            const SizedBox(height: 20),
+            buildTitleRow(),
+            const SizedBox(height: 20),
+            Expanded(
+              child: BlocBuilder<SausageRollBloc, SausageRollState>(
+                builder: (context, state) {
+                  if (state is GetBasketLoadedState) {
+                    itemCount = state.sausageRollBasketEntity.basketItems.length;
+                    basketItems = state.sausageRollBasketEntity.basketItems;
+                  }
+                  if(basketItems.isEmpty){
+                    return const WidgetMessageDisplay(message: strBasketIsEmpty);
+                  }else{
+                    return ListView.separated(
+                        itemBuilder: (context, position) {
+                          return Dismissible(
+                            key: UniqueKey(),
+                            child: WidgetBasketItem(sausageRollEntity: basketItems[position]),
+                            onDismissed: (DismissDirection direction) {
+                              BlocProvider.of<SausageRollBloc>(context)
+                                  .add(RemoveSausageFromBasketEvent(sausageRollEntity: basketItems[position]));
+                            },
+                          );
+                          // return WidgetBasketItem(sausageRollEntity: basketItems[position]);
+                        },
+                        separatorBuilder: (context, index) => buildSeparatorBuilder(),
+                        itemCount: itemCount);
+                  }
+                },
+              ),
             ),
-          ),
-        ));
+            const SizedBox(height: 30),
+            buildSeparatorBuilder(),
+            buildSubTotalRow()
+          ],
+        ),
+      ),
+    ));
   }
 
   buildTitleRow() {

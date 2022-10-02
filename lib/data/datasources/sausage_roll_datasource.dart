@@ -8,7 +8,7 @@ abstract class SausageRollDataSource {
   Future<List<SausageRollModel>> getSausageRolls();
 }
 
-// read file and return list of sausage roll model
+
 class SausageRollDataSourceImpl extends SausageRollDataSource {
   final String jsonData;
 

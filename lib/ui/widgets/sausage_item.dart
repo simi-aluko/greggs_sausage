@@ -17,19 +17,19 @@ class WidgetSausageItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildItemListTitle(title: sausageRollEntity.articleName),
-              const SizedBox(height: 10,),
+              const SizedBox(height: 10),
               Row(
                 children: [
                   buildIcon(icon: imgEatIn),
-                  const SizedBox(width: 5,),
+                  const SizedBox(width: 5),
                   buildIconText(text: sausageRollEntity.eatInPrice.toString()),
-                  const SizedBox(width: 20,),
+                  const SizedBox(width: 20),
                   buildIcon(icon: imgEatOut),
-                  const SizedBox(width: 5,),
+                  const SizedBox(width: 5),
                   buildIconText(text: sausageRollEntity.eatOutPrice.toString()),
                 ],
               ),
-              const SizedBox(height: 6,),
+              const SizedBox(height: 6),
               buildItemListTextDescription(text: sausageRollEntity.customerDescription)
             ],
           ),

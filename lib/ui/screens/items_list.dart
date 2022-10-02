@@ -34,29 +34,35 @@ class _ScreenItemsListState extends State<ScreenItemsList> {
         child: Column(
           children: [
             buildTitle(),
-            const SizedBox(height: 30,),
-            BlocBuilder<SausageRollBloc, SausageRollState>(
-                builder: (context, state){
-              if(state is SausageRollListLoadedState){
+            const SizedBox(height: 30),
+            BlocBuilder<SausageRollBloc, SausageRollState>(builder: (context, state) {
+              if (state is SausageRollListLoadedState) {
                 sausageRollEntities = state.sausageRollEntities;
               }
               return Expanded(
                 child: ListView.separated(
                   itemCount: sausageRollEntities.length,
-                  itemBuilder: (context, position){
+                  itemBuilder: (context, position) {
                     return InkWell(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => ScreenItemDetail(sausageRollEntity: sausageRollEntities[position])));
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    ScreenItemDetail(sausageRollEntity: sausageRollEntities[position])));
                       },
                       child: WidgetSausageItem(sausageRollEntity: sausageRollEntities[position]),
                     );
                   },
                   separatorBuilder: (context, index) {
-                    return Divider(color: colorDarkBlue,);
-                  },),
+                    return Divider(
+                      color: colorDarkBlue,
+                    );
+                  },
+                ),
               );
             }),
-            buildDefaultBottomBtn(strViewBasket, (){
+            buildDefaultBottomBtn(strViewBasket, () {
               Navigator.push(context, MaterialPageRoute(builder: (context) => const ScreenBasket()));
             })
           ],
@@ -82,10 +88,12 @@ class _ScreenItemsListState extends State<ScreenItemsList> {
         ),
         const Spacer(),
         buildShoppingBag(),
-        const SizedBox(width: 5,),
+        const SizedBox(
+          width: 5,
+        ),
         BlocBuilder<SausageRollBloc, SausageRollState>(
           builder: (context, state) {
-            if(state is GetBasketLoadedState){
+            if (state is GetBasketLoadedState) {
               basketSize = state.sausageRollBasketEntity.basketItems.length;
             }
             return buildItemDetailTitle(title: basketSize.toString());
